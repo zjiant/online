@@ -1,4 +1,4 @@
-1.0
+﻿1.0
 1.0.1增加jedis 2.5.1
 commons-pool2-2.0.jar
 gradle-wrapper.jar
@@ -53,6 +53,10 @@ setZjianRedisCustomerTest
 文件applicationContext-redis.xml
 增加文件ZjianSpring*.java
 测试类ZjianSpring*Test
+
+
+2.1
+git
 
 
 
