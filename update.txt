@@ -1,0 +1,64 @@
+1.0
+1.0.1增加jedis 2.5.1
+commons-pool2-2.0.jar
+gradle-wrapper.jar
+hamcrest-core-1.3.jar
+junit-4.11.jar
+
+
+1.1
+1.1.1增加客户接口setZjianRedisCustomer(ZjianRedisCustomer)
+
+1.2
+1.2.1增加log4j日志功能+log4j-1.2.17.jar
+1.2.2增加Constants常量类
+1.2.3增加zjian_redis.properties属性配置(主,从，心跳IP)
+1.2.4增加方法
+座席接口： setZjianRedisService(ZjianRedisService)
+客户心跳接口： setZjianRedisCustomerHeartbeat
+客户-座席接口（查询）： getZjianRedisService(String sZjianRedisCustomerKey)
+座席-客户list接口： getZjianRedisCustomerList(String sZjianRedisServiceKey)
+分配客户getZjianRedisCustomer(String sZjianRedisServiceKey)
+
+1.3
+1.3.1所有方法都改为pool模式：注意，每次都清pool，不知道性能
+pool.returnResource(jedis);pool.destroy();
+1.3.2（以后改进：一个方法一个pool，或者不清pool看性能）
+1.3.3重构ZjianJedisSentinelPool，
+分为ZjianRedisList,ZjianRedisString,ZjianRedisPoolList,ZjianRedisPoolString
+
+1.4
+增加事务：(客户心跳接口：setZjianRedisCustomerHeartbeat）
+加锁:watch,multi,exec
+
+1.5
+重构ZjianRedisPoolList，ZjianRedisPoolString,
+增加ZjianResisServicePoolImpl，接口统一pool
+
+
+1.6
+增加测试类ZjianResisServicePoolTest
+多线程测试报错，估计跟redis 单核不支持多线程有关系
+ZjianResisServicePoolImpl去掉REDIS_SERVICE_KEYS保存，pool.destroy();
+本机ubantu测试10万条  （vpn大众点评速度太慢）
+setZjianRedisCustomerTest
+执行耗时 : 272.062 秒  多的数据保存
+执行耗时 : 149.39 秒   简单的对象保持 连接加10倍
+执行耗时 : 137.657 秒  简单的对象保持 
+
+
+2.0
+增加maven环境pom.xml自动加载spring包
+重构代码配置
+文件applicationContext-redis.xml
+增加文件ZjianSpring*.java
+测试类ZjianSpring*Test
+
+
+
+
+
+
+
+
+
