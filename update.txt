@@ -56,7 +56,7 @@ setZjianRedisCustomerTest
 
 
 2.1
-git
+git2
 
 
 
